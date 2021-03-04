@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}Daftar Menu{% endblock %}
+
+
+{% block content %}
+  <div class="row mt-5">
+    <div class="col-md-12">
+      <h4 class="display-2 text-center text-shadow ">
+        Order Aktif
+      </h4>
+      <h4 class="mt-4 text-center">
+        Daftar order yang aktif
+      </h4>
+    </div>
+  </div>
+<div class="row mt-3">
+  <div class="col-lg-12">
+
+    <div class="card-columns">
+      {% for order in orders %}
+      <div class="card bg-warning text-dark border-dark shadow-lg">
+        <div class="card-body">
+          <h1 class="card-title">{{ order.meja }}</h1>
+          <h3>IDR {{ order.total }}, A/N {{ order.pelanggan }}</h3>
+        </div>
+        <ul class="list-group list-group-flush bg-warning">
+          {% for item in order.order_item.all %}
+            <li class="list-group-item text-dark bg-warning">
+              {{ item.menu.nama }} <br>
+              IDR {{ item.harga }} x {{ item.qty }} = IDR {{ item.subtotal }}
+            </li>
+          {% empty %}
+            <li class="list-group-item text-dark bg-warning">
+              Item belum ada!
+            </li>
+          {% endfor %}
+        </ul>
+        <div class="card-footer">
+          <div class="btn-group d-flex justify-content-end" role="group">
+            <a href="{% url 'pos:daftar-menu' order_id=order.id %}"
+               class="btn btn-dark btn-lg"
+            >
+              Tambah Item
+            </a>
+            <a href="{% url 'pos:bayar-order' id=order.id %}"
+               class="btn btn-success btn-lg"
+            >
+              Bayar
+            </a>
+            <a href="{% url 'pos:batal-order' id=order.id %}"
+               class="btn btn-danger btn-lg"
+            >
+              Batal
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+
+</div>
+{% endblock %}

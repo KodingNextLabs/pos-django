@@ -1,0 +1,23 @@
+<div class="card bg-warning text-dark border-dark shadow-lg">
+  <div class="card-body">
+    <h1 class="card-title">Meja {{ order.meja }}</h1>
+    <h3>IDR {{ order.total }}, A/N {{ order.pelanggan }}</h3>
+  </div>
+
+  <ul class="list-group list-group-flush bg-warning">
+    {% for item in order.order_item.all %}
+      <li class="list-group-item text-dark bg-warning">
+        {{ item.menu.nama }} <br>
+        IDR {{ item.harga }} x {{ item.qty }} = IDR {{ item.subtotal }}
+      </li>
+    {% empty %}
+      <li class="list-group-item text-dark bg-warning">
+        Item belum ada!
+      </li>
+    {% endfor %}
+  </ul>
+
+  <div class="card-footer">
+    <a href="#" class="btn btn-success btn-lg btn-block">Bayar</a>
+  </div>
+</div>

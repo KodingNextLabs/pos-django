@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}Bayar Order{% endblock %}
+
+
+{% block content %}
+  <div class="row mt-5 d-flex justify-content-center">
+    <div class="col-lg-5 ">
+
+      <div class="card bg-dark shadow">
+        <div class="card-body">
+          <h2 class="card-title">IDR {{ order.total }}</h2>
+          <p>Pembayaran oleh {{ order.pelanggan }}</p>
+          <form method="post" novalidate>
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button type="submit"
+                    class="btn btn-success btn-lg btn-block"
+            >
+              Bayar
+            </button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+{% endblock %}

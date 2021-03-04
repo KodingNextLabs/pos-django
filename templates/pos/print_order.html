@@ -1,0 +1,22 @@
+
+<pre style="width: 300px; margin: 0 auto; padding: 2px;">
+  NOMOR MEJA {{ order.meja|upper }}
+  ===========================
+
+  PESANAN:
+{% for item in order.order_item.all %}
+  #{{ forloop.counter }}. {{ item.menu.nama|upper }}
+      QTY                 {{ item.qty }}
+      HARGA               IDR. {{ item.harga }}
+      SUBTOTAL            IDR. {{ item.subtotal }}
+{% endfor %}
+
+  TOTAL                   IDR. {{ order.total }}
+  PELANGGAN               BPK/IBU. {{ order.pelanggan }}
+  DIBAYAR                 IDR. {{ order.dibayar }}
+  KEMBALI                 IDR. {{ order.kembali }}
+</pre>
+
+<script>
+  window.print()
+</script>

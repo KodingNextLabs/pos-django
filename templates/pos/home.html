@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Simple POS{% endblock %}
+
+{% block content %}
+<div class="row mt-5">
+  <div class="col-md-12">
+    <h1 class=" display-2 d-flex justify-content-center">
+      Cafe POS
+    </h1>
+    <h4 class=" mt-4 d-flex justify-content-center">
+      Point of Sales By
+      &nbsp;
+      <span class="text-success">Pro Koders</span>&nbsp;
+      Free Webinar
+    </h4>
+  </div>
+</div>
+<div class="row mt-3 d-flex justify-content-center text-light">
+
+  <div class="col-xl-12 mb-4">
+    <a href="{% url 'pos:buat-order' %}" class="text-decoration-none">
+      <div class="card bg-warning text-dark">
+        <div class="card-body shadow d-flex justify-content-center">
+          <h4 class="display-2 text-pink card-title text-center">
+            New Order
+          </h4>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div class="col-xl-12 mb-4">
+    <a href="{% url 'pos:order-aktif' %}" class="text-decoration-none">
+      <div class="card bg-warning text-dark">
+        <div class="card-body shadow d-flex justify-content-center">
+          <h4 class="display-2 card-title text-center">
+            Active Order
+          </h4>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+{% endblock %}

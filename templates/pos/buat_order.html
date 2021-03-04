@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}New Order{% endblock %}
+
+
+{% block content %}
+  <div class="row mt-5">
+    <div class="col-md-12">
+      <h1 class="display-2 text-shadow d-flex justify-content-center">
+        New Order
+      </h1>
+      <h4 class="mt-4 d-flex justify-content-center">
+        Masukan nomor meja dan nama pelanggan
+      </h4>
+    </div>
+  </div>
+  <div class="row mt-3 d-flex justify-content-center">
+    <div class="col-lg-5 ">
+
+      <div class="card bg-dark">
+        <div class="card-body">
+          <form method="post" novalidate>
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button type="submit"
+                    class="btn btn-success btn-lg btn-block"
+            >
+              Simpan
+            </button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+{% endblock %}
